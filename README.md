@@ -115,3 +115,7 @@ auth_system/
 - Only authenticated users can access dashboards.
 
 ---
+
+## Tech Stack
+
+- Python, Django 
