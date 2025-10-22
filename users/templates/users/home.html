@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome - Healthcare System</title>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <a href="{% url 'home' %}" class="text-xl font-bold text-gray-800"
+          >Healthcare System</a
+        >
+        <div class="space-x-4">
+          {% if user.is_authenticated %}
+          <a href="{% url 'home' %}" class="text-gray-700 hover:text-blue-600"
+            >Dashboard</a
+          >
+          <a href="{% url 'logout' %}" class="text-gray-700 hover:text-red-600"
+            >Logout</a
+          >
+          {% else %}
+          <a href="{% url 'login' %}" class="text-gray-700 hover:text-blue-600"
+            >Login</a
+          >
+          <a href="{% url 'signup' %}" class="text-gray-700 hover:text-blue-600"
+            >Sign Up</a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div
+      class="flex-grow flex flex-col items-center justify-center text-center px-4"
+    >
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+        Welcome to Healthcare System
+      </h1>
+      <p class="text-gray-600 mb-8">
+        Securely manage your health records and appointments online
+      </p>
+
+      {% if not user.is_authenticated %}
+      <div class="space-x-4">
+        <!-- Login Button -->
+        <a
+          href="{% url 'login' %}"
+          class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 hover:shadow-lg hover:scale-105 transition duration-200"
+        >
+          Login
+        </a>
+
+        <!-- Signup Button -->
+        <a
+          href="{% url 'signup' %}"
+          class="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 hover:shadow-md hover:scale-105 transition duration-200"
+        >
+          Sign Up
+        </a>
+      </div>
+
+      {% else %}
+      <a
+        href="{% url 'home' %}"
+        class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+        >Go to Dashboard</a
+      >
+      {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t py-4 mt-auto">
+      <div class="max-w-7xl mx-auto text-center text-gray-500 text-sm">
+        &copy; 2025 Healthcare System. All rights reserved.
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </body>
+</html>
